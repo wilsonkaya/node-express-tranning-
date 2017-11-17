@@ -2,6 +2,8 @@ const express = require('express')
 const app = express()
 const hbs = require('hbs')
 const fs = require('fs')
+const port = process.env.PORT || 3000 //this store the post that we are going to use for the app
+                                      //porcess.env sotres all key value pares and PORT is set by Heroku. ||3000 for default
 
 
 hbs.registerPartials(__dirname + '/views/partials')
@@ -53,4 +55,6 @@ app.get('/bad', (req, res) => {
   })
 })
 
-app.listen(3000)
+app.listen(port, () => {
+  console.log(`Server is up on port ${port}`)
+})

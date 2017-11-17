@@ -22,9 +22,9 @@ app.use((req, res, next)=>{
   next()
 })
 
-app.use((req, res, next) =>{
-  res.render("maintenance.hbs")
-})
+// app.use((req, res, next) =>{
+//   res.render("maintenance.hbs")
+// })
 
 app.use(express.static(__dirname + '/public')) //bunu assagi almamizin sebebi middleware ilk once run etmesi icin
 
@@ -48,12 +48,19 @@ app.get('/about', (req, res)=>{
     pageTitle: 'this is about page'
   })
 })
+app.get('/projects', (req,res) => {
+  res.render('projects.hbs', {
+    pageTitle: "This is the porjects page"
+  })
+})
 
 app.get('/bad', (req, res) => {
   res.send({
     errorMessage: 'Yanlis yere geldin arkadasim'
   })
 })
+
+
 
 app.listen(port, () => {
   console.log(`Server is up on port ${port}`)
